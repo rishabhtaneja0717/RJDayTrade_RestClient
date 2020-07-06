@@ -1,8 +1,6 @@
 package com.rjdaytrade.restClient.client;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -16,19 +14,19 @@ public class TransactionClientImpl extends AbstractRestClient implements Transac
 
 	@Override
 	public List<Transaction> getTodaysTransactions(Long id) {
-		
-		ResponseEntity<Transaction[]> response = restTemplate.getForEntity(BASE_URI + "transactions/real/today/" + id, Transaction[].class);
+
+		ResponseEntity<Transaction[]> response = restTemplate.getForEntity(BASE_URI + "transactions/real/today/" + id,
+				Transaction[].class);
 		return Arrays.asList(response.getBody());
 	}
-	
+
 	@Override
-	public GainSummary getRealMonthTransactionsAfterDate(Long id, Integer month, Date date) {
-		String strDate = new SimpleDateFormat("MM-dd-yyyy").format(date);
-		
-		ResponseEntity<GainSummary> response = restTemplate.getForEntity(BASE_URI + "transactions/real/month/after/" + id +"/" + month + "/" + strDate, 
-				GainSummary.class);
-		
+	public GainSummary getRealDaysSummary(Long id, Integer daysInterval) {
+
+		ResponseEntity<GainSummary> response = restTemplate.getForEntity(
+				BASE_URI + "/transactions/real/daysSummary/" + id + "/" + daysInterval.toString(), GainSummary.class);
+
 		return response.getBody();
 	}
-	
+
 }
