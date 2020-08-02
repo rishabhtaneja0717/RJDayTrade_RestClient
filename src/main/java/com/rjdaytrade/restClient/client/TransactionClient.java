@@ -10,4 +10,6 @@ public interface TransactionClient {
 	List<Transaction> getTodaysTransactions(Long id);
 	
     GainSummary getRealDaysSummary(Long id, Integer daysInterval);
+    
+    List<GainSummary> getRealDaysGroupedSummary(Long id, Integer daysInterval);
 }

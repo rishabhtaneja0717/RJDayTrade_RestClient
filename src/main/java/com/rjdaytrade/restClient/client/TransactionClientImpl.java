@@ -28,5 +28,14 @@ public class TransactionClientImpl extends AbstractRestClient implements Transac
 
 		return response.getBody();
 	}
+	
+	@Override
+	public List<GainSummary> getRealDaysGroupedSummary(Long id, Integer daysInterval) {
+
+		ResponseEntity<GainSummary[]> response = restTemplate.getForEntity(
+				BASE_URI + "/transactions/real/daysGroupedSummary/" + id + "/" + daysInterval.toString(), GainSummary[].class);
+
+		return Arrays.asList(response.getBody());
+	}
 
 }
