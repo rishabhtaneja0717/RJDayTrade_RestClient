@@ -38,4 +38,25 @@ public class TransactionClientImpl extends AbstractRestClient implements Transac
 		return Arrays.asList(response.getBody());
 	}
 
+	@Override
+	public List<Transaction> getRealDaysTransactions(Long id, Integer daysInterval, Integer limit) {
+		
+		ResponseEntity<Transaction[]> response = null;
+		
+		if(limit == null) {
+			response = restTemplate.getForEntity(BASE_URI + "transactions/real/days/" + id + "/" + daysInterval.toString(),
+					Transaction[].class);
+		} else {
+			response = restTemplate.getForEntity(BASE_URI + "transactions/real/days/" + id + "/" + daysInterval.toString() + "?limit=" + limit.toString(),
+					Transaction[].class);
+		}
+
+		return Arrays.asList(response.getBody());
+	}
+
+	@Override
+	public List<Transaction> getRealDaysTransactions(Long id, Integer daysInterval) {
+		return getRealDaysTransactions(id, daysInterval, null);
+	}
+
 }
