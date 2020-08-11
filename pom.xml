@@ -10,13 +10,13 @@
 	</parent>
 	<groupId>com.rjdaytrade</groupId>
 	<artifactId>restClient</artifactId>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.3</version>
 	<name>RJDaytrade_RestClient</name>
 	<description>Rest Client project for RJDayTrade</description>
 
 	<properties>
 		<java.version>11</java.version>
-		<rjdaytrade.model.version>1.0.2-SNAPSHOT</rjdaytrade.model.version>
+		<rjdaytrade.model.version>1.0.3</rjdaytrade.model.version>
 	</properties>
 
 	<dependencies>
